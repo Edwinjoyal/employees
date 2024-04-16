@@ -1,0 +1,35 @@
+MariaDB [(none)]> use dummy;
+
+MariaDB [dummy]> create table employees(employee_id int primary key, firstname varchar(100), lastname varchar(100), department varchar(100), position varchar(100),salary decimal(10, 2));
+Query OK, 0 rows affected 
+
+MariaDB [dummy]> insert into employees VALUES (1, 'John', 'Doe', 'IT', 'Software Engineer', 60000.00);
+Query OK, 1 row affected
+
+MariaDB [dummy]> insert into employees values(2, 'Jane', 'Smith', 'HR', 'HR Manager', 70000.00);
+Query OK, 1 row affected 
+
+MariaDB [dummy]> insert into employees values(3, 'oreo', 'kith', 'HR', ' Manager', 10000.00);
+Query OK, 1 row affected 
+
+MariaDB [dummy]> select *from employees;
++-------------+-----------+----------+------------+-------------------+----------+
+| employee_id | firstname | lastname | department | position          | salary   |
++-------------+-----------+----------+------------+-------------------+----------+
+|           1 | John      | Doe      | IT         | Software Engineer | 65000.00 |
+|           2 | Jane      | Smith    | HR         | HR Manager        | 70000.00 |
+|           3 | oreo      | kith     | HR         |  Manager          | 10000.00 |
++-------------+-----------+----------+------------+-------------------+----------+
+
+MariaDB [dummy]> update employees set department='it' where employee_id=3;
+Query OK, 1 row affected (0.083 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [dummy]> select *from employees;
++-------------+-----------+----------+------------+-------------------+----------+
+| employee_id | firstname | lastname | department | position          | salary   |
++-------------+-----------+----------+------------+-------------------+----------+
+|           1 | John      | Doe      | IT         | Software Engineer | 65000.00 |
+|           2 | Jane      | Smith    | HR         | HR Manager        | 70000.00 |
+|           3 | oreo      | kith     | it         |  Manager          | 10000.00 |
++-------------+-----------+----------+------------+-------------------+----------+
